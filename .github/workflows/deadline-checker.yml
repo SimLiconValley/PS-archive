@@ -1,0 +1,48 @@
+name: Deadline Checker (Milestone)
+
+on:
+  schedule:
+    # 매일 한국 시간 오전 9시 실행 (UTC 00:00)
+    - cron: "0 0 * * *"
+  workflow_dispatch: # 수동으로 테스트 실행 가능하게 함
+
+permissions:
+  issues: write # 봇이 이슈에 댓글을 달아야 하므로 쓰기 권한 필요
+
+jobs:
+  check-overdue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for overdue milestones
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const today = new Date(); // 오늘 날짜
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              filter: "all",
+            }); // 열려있는 모든 이슈를 페이지네이션으로 가져옴
+
+            for (const issue of issues) {
+              if (!issue.milestone?.due_on) continue; // 마일스톤 예외 처리
+
+              const deadline = new Date(issue.milestone.due_on);
+              const todayStr = today.toISOString().split("T")[0];
+              const deadlineStr = deadline.toISOString().split("T")[0];
+
+              if (todayStr < deadlineStr) continue; // 마감일이 당일이거나 지났는지 확인
+
+              const message = `🚨 **마감일 알림** 🚨\n\n@${issue.user.login} 님, 이 이슈의 마일스톤 마감일(${deadlineStr})이 되었습니다(또는 지났습니다).\n일정을 확인해 주세요!`;
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: message,
+              });
+
+              console.log(`알림 전송 완료: Issue #${issue.number}`);
+            }
