@@ -1,13 +1,15 @@
 # PS-archive
 
-이 저장소는 구성원들의 알고리즘 문제 풀이(PS, Problem Solving)를 공유하기 위한 공간입니다.
+- 알고리즘 문제 풀이(PS, Problem Solving)를 공유하기 위한 공간입니다.
+- **[활용방법](https://github.com/SimLiconValley/PS-archive/blob/main/0_docs/01_%ED%99%9C%EC%9A%A9%EB%B0%A9%EB%B2%95.md)** 을 참고하여 사용해주세요.
 
-## 웹 컴파일러
+## 💽 참고 사이트
 
-|서비스명|링크|언어|
-|---|---|---|
-|My Compiler  | [my compiler](https://www.mycompiler.io/de/new/cpp) |all|
-|Compiler Explorer | [compiler explorer](https://godbolt.org/) |all|
+|코딩테스트 사이트| \| |웹컴파일러|
+|:---:|---|:---:|
+|[백준](https://www.acmicpc.net/workbook/view/1152)| \| |[My Compiler](https://www.mycompiler.io/de/new/cpp) |
+|[프로그래머스](https://school.programmers.co.kr/learn/challenges?order=recent&levels=2%2C3&languages=javascript)| \| |[Compiler Explorer](https://godbolt.org/) |
+
 
 ## 📚 학습 자료
 
