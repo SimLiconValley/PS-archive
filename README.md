@@ -8,7 +8,7 @@
 |코딩테스트 사이트| \| |웹컴파일러|
 |:---:|---|:---:|
 |[백준](https://www.acmicpc.net/workbook/view/1152)| \| |[My Compiler](https://www.mycompiler.io/de/new/cpp) |
-|[프로그래머스](https://school.programmers.co.kr/learn/challenges?order=recent&levels=2%2C3&languages=javascript)| \| |[Compiler Explorer](https://godbolt.org/) |
+|[프로그래머스](https://school.programmers.co.kr/learn/challenges?order=recent&levels=2%2C3&page=1&languages=cpp)| \| |[Compiler Explorer](https://godbolt.org/) |
 
 
 ## 📚 학습 자료
